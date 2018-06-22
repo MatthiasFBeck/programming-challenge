@@ -58,5 +58,16 @@ public class UtilityCSV {
 		}
 	}
 	
+	// Method takes 2 columns, calculates the line with the smallest absolute difference and returns the line name (first column entry of calculated line). Method expects a head: no data to be analyzed in first row.
+	public String minDist(int col1, int col2){
+		
+		String result = (String)data.get(1).get(0);
+		
+		for (int i = 1; i < data.size(); i++){
+			
+		}
+		return "";
+	}
+	
 
 }
