@@ -67,21 +67,27 @@ public class UtilityCSV {
 	
 	// Method takes 2 columns, calculates the line with the smallest absolute difference and returns the line name (first column entry of calculated line). Method expects a head: no data to be analyzed in first row.
 	public String minDist(int col1, int col2){
+		String result = "";
 		
-		String result = (String)data.get(1).get(0);
+		try{
+			result = (String)data.get(1).get(0);
 		
-		// storage smallest absolute difference calculated so far. Initialize with difference of first row
-		Double smallestDiff = Math.abs(Double.parseDouble((String)data.get(1).get(col1)) - Double.parseDouble((String)data.get(1).get(col2)));
-		
-		for (int i = 1; i < data.size(); i++){
-			// store the two values of the current line
-			Double val1 = Double.parseDouble((String)data.get(i).get(col1));
-			Double val2 = Double.parseDouble((String)data.get(i).get(col2));
+			// storage smallest absolute difference calculated so far. Initialize with difference of first row
+			Double smallestDiff = Math.abs(Double.parseDouble((String)data.get(1).get(col1)) - Double.parseDouble((String)data.get(1).get(col2)));
 			
-			if (Math.abs(val1 - val2) < smallestDiff){
-				smallestDiff = Math.abs(val1 - val2);
-				result = (String)data.get(i).get(0);
+			for (int i = 1; i < data.size(); i++){
+				// store the two values of the current line
+				Double val1 = Double.parseDouble((String)data.get(i).get(col1));
+				Double val2 = Double.parseDouble((String)data.get(i).get(col2));
+				
+				if (Math.abs(val1 - val2) < smallestDiff){
+					smallestDiff = Math.abs(val1 - val2);
+					result = (String)data.get(i).get(0);
+				}
 			}
+		} catch(IndexOutOfBoundsException e){
+			e.printStackTrace();
+			System.out.println("\n Wrong column index.");
 		}
 		return result;
 	}
@@ -90,6 +96,7 @@ public class UtilityCSV {
 		public String maxDist(int col1, int col2){
 			String result = "";
 			
+			try{
 				result = (String)data.get(1).get(0);
 				
 				// storage biggest absolute difference calculated so far. Initialize with difference of first row
@@ -105,9 +112,11 @@ public class UtilityCSV {
 						result = (String)data.get(i).get(0);
 					}
 				}
-			
+			} catch(IndexOutOfBoundsException e){
+				e.printStackTrace();
+				System.out.println("\n Wrong column index.");
+			}
 			return result;
 		}
 	
-
 }
