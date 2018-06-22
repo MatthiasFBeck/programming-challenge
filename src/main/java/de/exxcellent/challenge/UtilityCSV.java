@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.lang.Math;
+import java.lang.Double;
 
 public class UtilityCSV {
 	
@@ -63,10 +65,20 @@ public class UtilityCSV {
 		
 		String result = (String)data.get(1).get(0);
 		
+		// storage smallest absolute difference calculated so far. Initialize with difference of first row
+		Double smallestDiff = Math.abs(Double.parseDouble((String)data.get(1).get(col1)) - Double.parseDouble((String)data.get(1).get(col2)));
+		
 		for (int i = 1; i < data.size(); i++){
+			// store the two values of the current line
+			Double val1 = Double.parseDouble((String)data.get(i).get(col1));
+			Double val2 = Double.parseDouble((String)data.get(i).get(col2));
 			
+			if (Math.abs(val1 - val2) < smallestDiff){
+				smallestDiff = Math.abs(val1 - val2);
+				result = (String)data.get(i).get(0);
+			}
 		}
-		return "";
+		return result;
 	}
 	
 
