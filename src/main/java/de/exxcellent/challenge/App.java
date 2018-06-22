@@ -8,8 +8,8 @@ package de.exxcellent.challenge;
  */
 public final class App {
 
-    public static void main(String... args) {
-
+    public static void main(String... args) {	
+    	
         // Your preparation code …
 
         String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
